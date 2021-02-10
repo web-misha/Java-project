@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+</head>
+<body>
+    <nav>
+        <a href="/addClient">Добавить клиента</a>
+        <a href="/addAnimal">Добавить животное</a>
+        <a href="/addAgrAnimal">Добавить сельскохозяйственное животное</a>
+        <a href="/addWildAnimal">Добавить дикое животное</a>
+        <a href="/delete">Удалить по ID</a>
+    </nav>
+    
+    <h2>Найти клиента по ID</h2>
+    <form method="post">
+        <input type="number" name="clientId">
+    
+    <h2>Найти животное по ID</h2>
+        <input type="number" name="animalId">
+    
+    <h2>Найти сельскохозяйственное животное по ID</h2>
+        <input type="number" name="agrAnimalId">
+    
+    <h2>Найти дикое животное по ID</h2>
+        <input type="number" name="wildAnimalId">
+        <button type="submit">Найти</button>
+    </form>
+    
+    <h2>Клиенты</h2>   
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Имя</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="c : ${clients}">
+          <td th:text="${c.getIdClient()}"></td>
+          <td th:text="${c.getName}"></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h2>Животные</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Стоимость</th>
+          <th>Название</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="a : ${animals}">
+          <td th:text="${a.getIdAnimals()}"></td>
+          <td th:text="${a.getPrice}"></td>
+          <td th:text="${a.getName}"></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h2>Сельскохозяйственные животные</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Количество</th>
+          <th>ID животного</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="a : ${agriculturalAnimals}">
+          <td th:text="${a.getIdAgricultural()}"></td>
+          <td th:text="${a.getQuantity}"></td>
+          <td th:text="${a.getIdAnimals}"></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h2>Дикие животные</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Максимальная скорость</th>
+          <th>ID животного</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="w : ${wildAnimals}">
+          <td th:text="${w.getIdWild()}"></td>
+          <td th:text="${w.getMaxSpeed}"></td>
+          <td th:text="${w.getIdAnimals}"></td>
+        </tr>
+      </tbody>
+    </table>
+    
+</body>
+</html>
